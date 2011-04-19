@@ -23,5 +23,10 @@ describe Person do
   it "should have an array of phone numbers" do
     @person.phone_numbers.class.should == Array    
   end
+
+  it "should have an array of email addresses" do
+    @person.email_addresses.class.should == Array    
+  end
+
   
 end
