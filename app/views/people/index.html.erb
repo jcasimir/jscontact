@@ -4,11 +4,13 @@
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>Phone Numbers</th>
   </tr>
   <% for person in @people %>
     <tr>
       <td><%= person.first_name %></td>
       <td><%= person.last_name %></td>
+      <td><%= print_numbers person.phone_numbers %>
       <td><%= link_to "Show", person %></td>
       <td><%= link_to "Edit", edit_person_path(person) %></td>
       <td><%= link_to "Destroy", person, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -8,6 +8,12 @@
   <strong>Last Name:</strong>
   <%= @person.last_name %>
 </p>
+<p>
+  <strong>Phone Numbers:</strong>
+  <%= render :partial => 'phone_numbers' %>
+</p>
+
+<%= link_to "Add a New Phone Number", new_phone_number_path(:person_id => @person.id ) %>
 
 <p>
   <%= link_to "Edit", edit_person_path(@person) %> |

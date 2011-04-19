@@ -1,6 +1,6 @@
 # require File.dirname(__FILE__) + '/../spec_helper'
 # 
-# describe PeopleController do
+# describe PhoneNumbersController do
 #   fixtures :all
 #   render_views
 # 
@@ -10,7 +10,7 @@
 #   end
 # 
 #   it "show action should render show template" do
-#     get :show, :id => Person.first
+#     get :show, :id => PhoneNumber.first
 #     response.should render_template(:show)
 #   end
 # 
@@ -20,38 +20,38 @@
 #   end
 # 
 #   it "create action should render new template when model is invalid" do
-#     Person.any_instance.stubs(:valid?).returns(false)
+#     PhoneNumber.any_instance.stubs(:valid?).returns(false)
 #     post :create
 #     response.should render_template(:new)
 #   end
 # 
 #   it "create action should redirect when model is valid" do
-#     Person.any_instance.stubs(:valid?).returns(true)
+#     PhoneNumber.any_instance.stubs(:valid?).returns(true)
 #     post :create
-#     response.should redirect_to(person_url(assigns[:person]))
+#     response.should redirect_to(phone_number_url(assigns[:phone_number]))
 #   end
 # 
 #   it "edit action should render edit template" do
-#     get :edit, :id => Person.first
+#     get :edit, :id => PhoneNumber.first
 #     response.should render_template(:edit)
 #   end
 # 
 #   it "update action should render edit template when model is invalid" do
-#     Person.any_instance.stubs(:valid?).returns(false)
-#     put :update, :id => Person.first
+#     PhoneNumber.any_instance.stubs(:valid?).returns(false)
+#     put :update, :id => PhoneNumber.first
 #     response.should render_template(:edit)
 #   end
 # 
 #   it "update action should redirect when model is valid" do
-#     Person.any_instance.stubs(:valid?).returns(true)
-#     put :update, :id => Person.first
-#     response.should redirect_to(person_url(assigns[:person]))
+#     PhoneNumber.any_instance.stubs(:valid?).returns(true)
+#     put :update, :id => PhoneNumber.first
+#     response.should redirect_to(phone_number_url(assigns[:phone_number]))
 #   end
 # 
 #   it "destroy action should destroy model and redirect to index action" do
-#     person = Person.first
-#     delete :destroy, :id => person
-#     response.should redirect_to(people_url)
-#     Person.exists?(person.id).should be_false
+#     phone_number = PhoneNumber.first
+#     delete :destroy, :id => phone_number
+#     response.should redirect_to(phone_numbers_url)
+#     PhoneNumber.exists?(phone_number.id).should be_false
 #   end
 # end

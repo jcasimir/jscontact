@@ -10,4 +10,5 @@ group :development, :test do
   gem 'unicorn'
   gem 'nifty-generators'
   gem "mocha"
+  gem "capybara"
 end
