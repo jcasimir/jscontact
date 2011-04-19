@@ -10,7 +10,7 @@
 </p>
 <p>
   <strong>Phone Numbers:</strong>
-  <%= render :partial => 'phone_numbers' %>
+  <%= render :partial => 'phone_numbers', :object => @person.phone_numbers %>
 </p>
 
 <%= link_to "Add a New Phone Number", new_phone_number_path(:person_id => @person.id ) %>

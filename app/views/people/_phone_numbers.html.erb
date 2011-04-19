@@ -1,5 +1,5 @@
 <ul>
-  <% @person.phone_numbers.each do |phone_number| %>
+  <% phone_numbers.each do |phone_number| %>
     <li>
       <%= phone_number.number%>
       <%= link_to "edit", edit_phone_number_path(phone_number) %>
