@@ -4,9 +4,6 @@
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </p>
-  <p>
-    <%= f.label :person_id %><br />
-    <%= f.text_field :person_id %>
-  </p>
+  <%= f.hidden_field :person_id %>
   <p><%= f.submit %></p>
 <% end %>

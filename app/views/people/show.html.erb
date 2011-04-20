@@ -16,6 +16,13 @@
 <%= link_to "Add a New Phone Number", new_phone_number_path(:person_id => @person.id ) %>
 
 <p>
+  <strong>Email Addresses:</strong>
+  <%= render :partial => 'email_addresses', :object => @person.email_addresses %>
+</p>
+
+<%= link_to "Add a New Email Address", new_email_address_path(:person_id => @person.id ), :id => "new_email_address" %>
+
+<p>
   <%= link_to "Edit", edit_person_path(@person) %> |
   <%= link_to "Destroy", @person, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", people_path %>
