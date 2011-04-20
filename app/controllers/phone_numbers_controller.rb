@@ -36,6 +36,6 @@ class PhoneNumbersController < ApplicationController
   def destroy
     @phone_number = PhoneNumber.find(params[:id])
     @phone_number.destroy
-    redirect_to @phone_number.person, :notice => "Successfully destroyed phone number."
+    redirect_to @phone_number.contact, :notice => "Successfully destroyed phone number."
   end
 end
