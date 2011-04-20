@@ -1,26 +1,15 @@
-<% title "Company" %>
+<div class="company">
+  <% title @company.name %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
-
-<p>
-  <strong>Phone Numbers:</strong>
   <%= render :partial => 'phone_numbers/phone_numbers', :object => @company.phone_numbers %>
-</p>
+  <%= link_to "Add a New Phone Number", new_phone_number_path(:company_id => @company), :id => "new_phone_number" %>
 
-<%= link_to "Add a New Phone Number", new_phone_number_path(:company_id => @company), :id => "new_phone_number" %>
-
-<p>
-  <strong>Email Addresses:</strong>
   <%= render :partial => 'email_addresses/email_addresses', :object => @company.email_addresses %>
-</p>
+  <%= link_to "Add a New Email Address", new_email_address_path(:company_id => @company), :id => "new_email_address" %>
 
-<%= link_to "Add a New Email Address", new_email_address_path(:company_id => @company), :id => "new_email_address" %>
-
-<p>
-  <%= link_to "Edit", edit_company_path(@company) %> |
-  <%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", companies_path %>
-</p>
+  <ul>
+    <li><%= link_to "Edit", edit_company_path(@company) %></li>
+    <li><%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to "View All", companies_path %></li>
+  </p>
+</div>
