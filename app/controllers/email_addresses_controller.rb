@@ -1,12 +1,4 @@
 class EmailAddressesController < ApplicationController
-  def index
-    @email_addresses = EmailAddress.all
-  end
-
-  def show
-    @email_address = EmailAddress.find(params[:id])
-  end
-
   def new
     if params[:person_id]
       contact = Person.find params[:person_id]

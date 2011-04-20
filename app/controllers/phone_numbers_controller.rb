@@ -1,12 +1,4 @@
 class PhoneNumbersController < ApplicationController
-  def index
-    @phone_numbers = PhoneNumber.all
-  end
-
-  def show
-    @phone_number = PhoneNumber.find(params[:id])
-  end
-
   def new
     if params[:person_id]
       contact = Person.find params[:person_id]
