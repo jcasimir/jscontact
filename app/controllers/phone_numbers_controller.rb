@@ -8,13 +8,18 @@ class PhoneNumbersController < ApplicationController
   end
 
   def new
-    @phone_number = PhoneNumber.new(:person_id => params[:person_id])
+    if params[:person_id]
+      contact = Person.find params[:person_id]
+    else
+      contact = Company.find params[:company_id]
+    end
+    @phone_number = contact.phone_numbers.new
   end
 
   def create
     @phone_number = PhoneNumber.new(params[:phone_number])
     if @phone_number.save
-      redirect_to @phone_number.person, :notice => "Successfully created phone number."
+      redirect_to @phone_number.contact, :notice => "Successfully created phone number."
     else
       render :action => 'new'
     end
@@ -27,7 +32,7 @@ class PhoneNumbersController < ApplicationController
   def update
     @phone_number = PhoneNumber.find(params[:id])
     if @phone_number.update_attributes(params[:phone_number])
-      redirect_to @phone_number.person, :notice  => "Successfully updated phone number."
+      redirect_to @phone_number.contact, :notice  => "Successfully updated phone number."
     else
       render :action => 'edit'
     end

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Company do
   before(:each) do
-    @company = Company.new(:name => "Sample Corp")
+    @company = Company.create(:name => "Sample Corp")
   end
   
   it "should be valid" do
@@ -23,4 +23,13 @@ describe Company do
     @company.phone_numbers.should include(phone_number)
   end
   
+  it "should have an array of email addresses" do
+    @company.email_addresses.should be_an_instance_of(Array)
+  end
+  
+  it "should respond with its email addresses after they're created" do
+    email_address = @company.email_addresses.build(:address => "john@doe.com")
+    @company.email_addresses.should include(email_address)
+    @company.should be_valid
+  end
 end

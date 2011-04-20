@@ -15,8 +15,8 @@ describe EmailAddress do
     @email_address.should_not be_valid
   end
   
-  it "should not be valid without a person" do
-    @email_address.person_id = nil
+  it "should not be valid without a contact" do
+    @email_address.contact = nil
     @email_address.should_not be_valid
   end
 end
