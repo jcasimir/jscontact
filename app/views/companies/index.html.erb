@@ -1,21 +1,18 @@
 <% title "Companies" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email Addresses</th>
-    <th>Phone Numbers</th>
-  </tr>
-  <% for company in @companies %>
-    <tr>
-      <td><%= company.name %></td>
-      <td><%= render :partial => 'email_addresses/email_addresses', :object => company.email_addresses %>
-      <td><%= render :partial => 'phone_numbers/phone_numbers', :object => company.phone_numbers %>
-      <td><%= link_to "Show", company %></td>
-      <td><%= link_to "Edit", edit_company_path(company) %></td>
-      <td><%= link_to "Destroy", company, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+<div class="companies">
+  <% @companies.each do |company| %>
+    <div class="company">
+      <h4><%= company.name %></h4>
+      <%= render :partial => 'email_addresses/email_addresses', :object => company.email_addresses %>
+      <%= render :partial => 'phone_numbers/phone_numbers', :object => company.phone_numbers %>
+      <ul class="actions">
+        <%= link_to "Show", company %>
+        <%= link_to "Edit", edit_company_path(company) %>
+        <%= link_to "Destroy", company, :confirm => 'Are you sure?', :method => :delete %>
+      </ul>
+    </div>
   <% end %>
-</table>
+</div>
 
 <p><%= link_to "New Company", new_company_path %></p>
