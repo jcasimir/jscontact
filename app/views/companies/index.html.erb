@@ -9,8 +9,8 @@
   <% for company in @companies %>
     <tr>
       <td><%= company.name %></td>
-      <td><%= render :partial => 'email_addresses', :object => company.email_addresses %>
-      <td><%= render :partial => 'phone_numbers', :object => company.phone_numbers %>
+      <td><%= render :partial => 'email_addresses/email_addresses', :object => company.email_addresses %>
+      <td><%= render :partial => 'phone_numbers/phone_numbers', :object => company.phone_numbers %>
       <td><%= link_to "Show", company %></td>
       <td><%= link_to "Edit", edit_company_path(company) %></td>
       <td><%= link_to "Destroy", company, :confirm => 'Are you sure?', :method => :delete %></td>

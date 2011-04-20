@@ -10,14 +10,14 @@
 </p>
 <p>
   <strong>Phone Numbers:</strong>
-  <%= render :partial => 'phone_numbers', :object => @person.phone_numbers %>
+  <%= render :partial => 'phone_numbers/phone_numbers', :object => @person.phone_numbers %>
 </p>
 
 <%= link_to "Add a New Phone Number", new_phone_number_path(:person_id => @person.id ) %>
 
 <p>
   <strong>Email Addresses:</strong>
-  <%= render :partial => 'email_addresses', :object => @person.email_addresses %>
+  <%= render :partial => 'email_addresses/email_addresses', :object => @person.email_addresses %>
 </p>
 
 <%= link_to "Add a New Email Address", new_email_address_path(:person_id => @person.id ), :id => "new_email_address" %>
