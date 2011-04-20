@@ -13,6 +13,13 @@
 <%= link_to "Add a New Phone Number", new_phone_number_path(:company_id => @company), :id => "new_phone_number" %>
 
 <p>
+  <strong>Email Addresses:</strong>
+  <%= render :partial => 'email_addresses', :object => @company.email_addresses %>
+</p>
+
+<%= link_to "Add a New Email Address", new_email_address_path(:company_id => @company), :id => "new_email_address" %>
+
+<p>
   <%= link_to "Edit", edit_company_path(@company) %> |
   <%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", companies_path %>
