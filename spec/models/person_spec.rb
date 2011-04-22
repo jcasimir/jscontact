@@ -10,6 +10,10 @@ describe Person do
     @person.should be_valid
   end
   
+  it "should convert to a string with last name, first name" do
+    @person.to_s.should == "Doe, John"
+  end
+  
   it "should not be valid without a first name" do
     @person.first_name = nil
     @person.should_not be_valid
