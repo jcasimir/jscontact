@@ -1,0 +1,14 @@
+- title "Companies" 
+
+%div.companies
+  - @companies.each do |company| 
+    div.company
+      %h4= company.name
+      = render :partial => 'email_addresses/email_addresses', :object => company.email_addresses 
+      = render :partial => 'phone_numbers/phone_numbers', :object => company.phone_numbers 
+      %ul.actions
+        = link_to "Show", company 
+        = link_to "Edit", edit_company_path(company) 
+        = link_to "Destroy", company, :confirm => 'Are you sure?', :method => :delete 
+
+%p= link_to "New Company", new_company_path
