@@ -1,4 +1,6 @@
 class PhoneNumbersController < ApplicationController
+  before_filter :find_resource, :only => [:destroy, :edit, :update]
+
   def new
     if params[:person_id]
       contact = Person.find params[:person_id]
@@ -18,11 +20,9 @@ class PhoneNumbersController < ApplicationController
   end
 
   def edit
-    @phone_number = PhoneNumber.find(params[:id])
   end
 
   def update
-    @phone_number = PhoneNumber.find(params[:id])
     if @phone_number.update_attributes(params[:phone_number])
       redirect_to @phone_number.contact, :notice  => "Successfully updated phone number."
     else
@@ -30,8 +30,7 @@ class PhoneNumbersController < ApplicationController
     end
   end
 
-  def destroy
-    @phone_number = PhoneNumber.find(params[:id])
+  def destroy    
     @phone_number.destroy
     redirect_to @phone_number.contact, :notice => "Successfully destroyed phone number."
   end

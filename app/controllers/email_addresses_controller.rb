@@ -1,4 +1,6 @@
 class EmailAddressesController < ApplicationController
+  before_filter :find_resource, :only => [:show, :destroy, :edit, :update]
+
   def new
     if params[:person_id]
       contact = Person.find params[:person_id]
@@ -18,11 +20,9 @@ class EmailAddressesController < ApplicationController
   end
 
   def edit
-    @email_address = EmailAddress.find(params[:id])
   end
 
   def update
-    @email_address = EmailAddress.find(params[:id])
     if @email_address.update_attributes(params[:email_address])
       redirect_to @email_address.contact, :notice  => "Successfully updated email address."
     else
@@ -31,7 +31,6 @@ class EmailAddressesController < ApplicationController
   end
 
   def destroy
-    @email_address = EmailAddress.find(params[:id])
     @email_address.destroy
     redirect_to @email_address.contact, :notice => "Successfully destroyed email address."
   end

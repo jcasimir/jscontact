@@ -1,10 +1,11 @@
 class PeopleController < ApplicationController
+  before_filter :find_resource, :only => [:show, :destroy, :edit, :update]
+
   def index
     @people = Person.all
   end
 
   def show
-    @person = Person.find(params[:id])
   end
 
   def new
@@ -21,11 +22,9 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = Person.find(params[:id])
   end
 
   def update
-    @person = Person.find(params[:id])
     if @person.update_attributes(params[:person])
       redirect_to @person, :notice  => "Successfully updated person."
     else
@@ -34,7 +33,7 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    @person = Person.find(params[:id])
+
     @person.destroy
     redirect_to people_url, :notice => "Successfully destroyed person."
   end

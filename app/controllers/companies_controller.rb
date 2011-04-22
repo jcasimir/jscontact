@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
+  before_filter :find_resource, :only => [:show, :destroy, :edit, :update]
+
   def index
     @companies = Company.all
   end
 
   def show
-    @company = Company.find(params[:id])
   end
 
   def new
@@ -21,11 +22,9 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     if @company.update_attributes(params[:company])
       redirect_to @company, :notice  => "Successfully updated company."
     else
@@ -34,8 +33,8 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
     @company.destroy
     redirect_to companies_url, :notice => "Successfully destroyed company."
   end
+  
 end
