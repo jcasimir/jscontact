@@ -1,8 +1,8 @@
-<% title "Edit Person" %>
+<% title "Edit #{@person.last_name}, #{@person.first_name}" %>
 
 <%= render 'form' %>
 
-<p>
-  <%= link_to "Show", @person %> |
-  <%= link_to "View All", people_path %>
+<ul class="actions">
+  <li><%= link_to "Show", @person %></li>
+  <li><%= link_to "View All", people_path %></li>
 </p>
