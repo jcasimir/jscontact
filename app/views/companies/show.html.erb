@@ -1,4 +1,10 @@
 <div class="company">
+  <ul class="actions">
+    <li><%= link_to "Edit", edit_company_path(@company) %></li>
+    <li><%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to "View All", companies_path %></li>
+  </ul>
+
   <% title @company.name %>
 
   <%= render :partial => 'phone_numbers/phone_numbers', :object => @company.phone_numbers %>
@@ -7,9 +13,4 @@
   <%= render :partial => 'email_addresses/email_addresses', :object => @company.email_addresses %>
   <%= link_to "Add a New Email Address", new_email_address_path(:company_id => @company), :id => "new_email_address" %>
 
-  <ul>
-    <li><%= link_to "Edit", edit_company_path(@company) %></li>
-    <li><%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %></li>
-    <li><%= link_to "View All", companies_path %></li>
-  </p>
 </div>

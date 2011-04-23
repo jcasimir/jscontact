@@ -1,0 +1,32 @@
+.people {
+  .person:first-child {
+    &:after {
+      content: " ";
+      background: #fff;
+      position: absolute;
+      left: 0; right: 0;
+      top: 90px; height: 95%;
+      min-height: 270px;
+      display: block;
+      font-size: 1.8em;
+      z-index: -1;
+    }
+  }
+  &:before {
+    content: "No one is here. You should probably fix that :)";
+    text-align: center;
+    line-height: 240px;
+    font-size: 1.8em;
+    position: absolute;
+    top: 100px; left: 0; right: 0;
+    height: 86%;
+    min-height: 260px;
+    @include box-sizing(border-box);
+    z-index: -1;
+    background: #eee;
+    color: #aaa;
+    border: 1px dashed #ddd;
+    @include border-radius(1em);
+    text-shadow: #fff 1px 1px 0;
+  }
+}

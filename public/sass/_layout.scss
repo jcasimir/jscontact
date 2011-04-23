@@ -1,0 +1,47 @@
+html {
+  background: $bg;
+  @include background-size(80px 80px);
+  @include background-image(linear-gradient(left top, rgba(#fff, .1) 25%, rgba(#fff, 0) 25%, rgba(#fff, 0) 50%, rgba(#fff, .1) 50%, rgba(#fff, .1) 75%, rgba(#fff, 0) 75%, rgba(#fff, 0)));
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans;
+  background: #fff;
+  margin: 50px auto 30px;
+  color: $text;
+  padding: 20px;
+  width: 85%;
+  min-width: 600px;
+  max-width: 1250px;
+  min-height: 380px;
+  position: relative;
+  line-height: 1.25em;
+  @include box-sizing(border-box);
+  @include border-radius(6px);
+  @include background-clip(padding-box);
+  &:before {
+    content: " ";
+    z-index: -2;
+    position: absolute;
+    left: -4px; right: 8px; top: 8px;
+    height: 260px;
+    background: darken($header, 4);
+    @include border-radius(6px);
+    @include box-shadow(rgba(#000, .15) -2px 3px 3px);
+    @include background-clip(padding-box);
+    @include transform(rotate(-2deg));
+  }
+  &:after {
+    content: " ";
+    @include stretch;
+    bottom: 2px;
+    @include border-radius(6px);
+    background: #000;
+    z-index: -1;
+    @include box-shadow(rgba(#000, .3) 0 2px 5px 1px);
+  }
+}
+
+#container {
+  position: relative;
+  z-index: 1;
+}

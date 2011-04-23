@@ -1,0 +1,8 @@
+$bg: adjust-hue(desaturate(#b0dbe8, 10), 10);
+$bg: change-color(#c7e491, $hue: 50);
+$bg: #d3dd8a;
+$header: adjust-color($bg, $lightness: 15, $saturation: -5);
+$header: #324e6a;
+$light: #6c7c9a;
+$text: #2d4159;
+$link: $text;

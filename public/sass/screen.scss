@@ -1,0 +1,238 @@
+@import "compass";
+@import "compass/reset";
+@import "compass/layout";
+@import "theme";
+@import "lib";
+@import "layout";
+@import "people";
+@import "fancy-buttons";
+@include reset-html5;
+
+.headings {
+  font-family: "Yanone Kaffeesatz", sans;
+}
+
+a { color: $link;
+  &:hover { color: darken($link, 6) };
+}
+
+.flash {
+  @include box-shadow(rgba(#000, .5) 0 1px 3px);
+  @include border-bottom-radius(6px);
+  @include box-sizing(border-box);
+  @include background-image(linear-gradient(rgba(#000, .4), rgba(#000, .6)));
+  border: 3px solid rgba(#fff, .5);
+  @include background-clip(padding-box);
+  text-shadow: rgba(#000, .6) 0 -1px;
+  color: #fff;
+  margin: 0 auto;
+  position: absolute; top: -51px; left: 0;
+  padding: .4em .8em;
+  width: 100%;
+  text-align: center;
+  border-top: 0;
+  &:empty {
+    height: 0px;
+    overflow: hidden;
+    padding: 0;
+    border-width: 0;
+    @include box-shadow(none);
+    background: none;
+  }
+}
+
+h1 {
+  @extend .headings;
+  @include border-top-radius(6px);
+  @include gradient-bg($header, 10);
+  @include box-shadow(rgba(#fff, .15) 0 1px inset, rgba(#fff, 1) 0 1px);
+  margin: -20px -20px 15px;
+  padding: 20px;
+  padding-right: 180px;
+  line-height: 1em;
+  font-weight: normal;
+  color: #fff;
+  position: relative;
+  text-shadow: darken($header, 15) 0 -2px;
+  font-size: 2.5em;
+  &:after {
+    content: " ";
+    position: absolute;
+    left: 0; right: 0;
+    height: 15px;
+    bottom: -16px;
+    border-top: 1px solid #e5e5e5;
+    @include background-image(linear-gradient(rgba(#aaa,.5), rgba(#fff, 0)));
+    z-index: 1;
+  }
+}
+h2, h3, h4 {
+  color: $text;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  margin: .2em 0 .5em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: bold;
+}
+
+.top-button {
+  position: absolute;
+  top: 26px;
+  right: 0px;
+  display: inline-block;
+  padding: 4px 11px;
+  font-size: .9em;
+  @include box-shadow(rgba(#fff, .4) 0 -1px inset);
+  @include border-radius(1.2em);
+  @include gradient-bg(#f5f5f5, $color2: #ccc);
+  text-shadow: #fff 0 1px;
+  color: #999999;
+  text-decoration: none;
+  &:hover {
+    color: #555;
+  }
+  &:active {
+    @include gradient-bg(#ccc, $color2: #f5f5f5);
+  }
+}
+
+h1 + p a[href$="new"] { @extend .top-button; }
+
+#articles {
+  margin: -15px -20px -20px;
+  padding: 0 20px 0;
+  min-width: 550px;
+  @include box-sizing(border-box);
+  position: relative;
+  @include border-bottom-radius(6px);
+  border-right: 1px solid #e2e2e2;
+  li {
+    border-bottom: 1px dashed #e5e5e5;
+    padding: 1em 0 .8em;
+    margin-right: 20px;
+    font-size: 1.2em;
+    position: relative;
+    &:last-child {
+      @include border-bottom-left-radius(6px);
+      border-bottom: 0;
+    }
+    & > a:first-child {
+      font-weight: bold;
+      display: block;
+      color: $text;
+      padding-bottom: .1em;
+    }
+  }
+  .actions {
+     border-left: 1px dotted #ddd;
+     padding-left: 8px;
+     margin-left: 3px;
+     line-height: 1em;
+     position: relative; top: 2px;
+     a { @include opacity(.2); }
+     a:hover { @include opacity(.4); }
+  }
+  .tag_list {
+    display: inline-block;
+    font-size: .8em;
+    padding-top: .5em;
+    color: #999;
+  }
+}
+
+.actions {
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: .7em;
+  padding-bottom: .7em;
+  font-size: .9em;
+  @include clearfix;
+  text-align: right;
+  a { float: left;
+    color: #999999;
+    padding-right: .5em;
+  }
+  a[href$='edit'], a[data-method='delete'] {
+    text-decoration: none;
+    float: none;
+    margin-left: .5em;
+    padding: 4px 12px 3px 8px;
+    @extend .top-button;
+    &:before {
+      @include opacity(.2);
+      position: relative;
+    }
+    &:hover:before { @include opacity(.6); }
+    //padding-left: 30px;
+  }
+  a[data-method='delete'] {
+    right: 90px;
+    &:before {
+      content: " ";
+      display: inline-block;
+      background: image-url("destroy.png") no-repeat;
+      width: image-width("destroy.png") + 4;
+      height: image-height("destroy.png");
+      top: 2px;
+    }
+  }
+  a[href$='edit'] {
+    &:before {
+      content: " ";
+      display: inline-block;
+      background: image-url("edit.png") no-repeat;
+      width: image-width("edit.png") + 4;
+      height: image-height("edit.png");
+      top: 2px;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  @include box-sizing(border-box);
+  @include border-radius(4px);
+  padding: .3em .4em;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  color: darken($text, 8);
+  font-size: 1.3em;
+  &:focus {
+    outline: 0;
+    @include box-shadow(rgba(#81b1df, .7) 0 0 5px 1px inset);
+    border-color: #81b1df;
+    background-color: #fff;
+  }
+}
+
+form {
+  input[type=text]{
+    @extend .input;
+    margin: 0;
+  }
+  p {
+    padding: 0;
+    margin-bottom: .6em;
+  }
+  label {
+    color: $light;
+    font-size: .9em;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding-bottom: .2em;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+  textarea {
+    @extend .input;
+    height: 12em;
+    font-size: 1.1em;
+  }
+}
+
+input[type=submit] {
+  @include fancy-button($header, $theme: mini);
+  font-size: 1.2em;
+}
+

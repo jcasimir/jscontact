@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "screen" %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
@@ -10,7 +10,9 @@
   <body>
     <div id="container">
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <div class="flash">
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
