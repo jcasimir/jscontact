@@ -5,7 +5,7 @@
 .people
   - @people.each do |person| 
     .person
-      %h4= link_to person, person
+      %h4= link_to person, person, :id => "person_#{person.id}"
       = render :partial => 'email_addresses/email_addresses', :object => person.email_addresses 
       = render :partial => 'phone_numbers/phone_numbers', :object => person.phone_numbers 
       %ul.actions

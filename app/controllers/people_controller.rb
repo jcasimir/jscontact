@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   before_filter :find_resource, :only => [:show, :destroy, :edit, :update]
 
   def index
-    @people = Person.all
+    @people = current_user.people
   end
 
   def show
