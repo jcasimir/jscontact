@@ -2,12 +2,15 @@ require 'spec_helper'
 
 describe Person do
   before(:each) do
-    @person = Person.new(:first_name => "John",
-                           :last_name => "Doe")
+    @person = Fabricate(:person)
   end
   
   it "should be valid" do
     @person.should be_valid
+  end
+  
+  it "should be the child of a User" do
+    @person.user.should be_instance_of(User)
   end
   
   it "should convert to a string with last name, first name" do

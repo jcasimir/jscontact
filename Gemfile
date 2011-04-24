@@ -14,4 +14,5 @@ group :development, :test do
   gem "mocha"
   gem "capybara"
   gem "autotest"
+  gem "fabrication"
 end

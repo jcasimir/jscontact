@@ -40,5 +40,10 @@ module JSContact
     config.filter_parameters += [:password]
     
     config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    
+    config.generators do |g|
+      g.test_framework      :rspec, :fixture => true
+      g.fixture_replacement :fabrication
+    end
   end
 end

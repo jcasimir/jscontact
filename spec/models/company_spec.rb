@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Company do
   before(:each) do
-    @company = Company.create(:name => "Sample Corp")
+    @company = Fabricate(:company)
   end
   
   it "should be valid" do
