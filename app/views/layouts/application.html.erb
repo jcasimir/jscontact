@@ -16,7 +16,7 @@
       <% end %>
       <div id='account'>
         <% if current_user %>
-          <span>Welcome, <%= current_user.name %></span>
+          <span>Welcome, <%= current_user.name %> (<%= current_user.id %>)</span>
           <%= link_to "logout", logout_path, :id => "login" %>
         <% else %>
           <%= link_to "login", login_path, :id => "logout" %>

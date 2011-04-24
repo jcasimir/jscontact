@@ -5,11 +5,11 @@ describe "the views for people", :type => :request do
   describe "when logged in as a user" do
     before(:all) do
       @user = Fabricate(:user_with_people_with_details)
-      login_as(@user)
     end
 
     describe "when looking at the list of people" do
       before(:each) do
+        login_as(@user)
         visit people_path
       end
 
@@ -30,6 +30,7 @@ describe "the views for people", :type => :request do
     
     describe "when looking at a single person" do
       before(:each) do
+        login_as(@user)
         @person = @user.people.first
         visit person_path(@person)
       end

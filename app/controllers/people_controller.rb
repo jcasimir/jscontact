@@ -13,7 +13,8 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.new(params[:person])
+    #@person = Person.new(params[:person])
+    @person = current_user.people.new(params[:person])
     if @person.save
       redirect_to @person, :notice => "Successfully created person."
     else

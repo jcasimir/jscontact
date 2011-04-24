@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_filter :find_resource, :only => [:show, :destroy, :edit, :update]
 
   def index
-    @companies = Company.all
+    @companies = current_user.companies
   end
 
   def show
@@ -13,7 +13,8 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(params[:company])
+    #@company = Company.new(params[:company])
+    @company = current_user.companies.new(params[:company])
     if @company.save
       redirect_to @company, :notice => "Successfully created company."
     else
