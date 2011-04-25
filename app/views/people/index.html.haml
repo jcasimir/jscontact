@@ -1,14 +1,14 @@
-- title "People" 
+- title "People"
 
 %p= link_to "New Person", new_person_path, :id => "new_person"
 
 .people
-  - @people.each do |person| 
+  - @people.each do |person|
     .person
       %h4= link_to person, person
-      = render :partial => 'email_addresses/email_addresses', :object => person.email_addresses 
-      = render :partial => 'phone_numbers/phone_numbers', :object => person.phone_numbers 
       %ul.actions
-        = link_to "Show", person 
-        = link_to "Edit", edit_person_path(person) 
+        = link_to "Show", person
+        = link_to "Edit", edit_person_path(person)
         = link_to "Destroy", person, :confirm => 'Are you sure?', :method => :delete
+      = render :partial => 'email_addresses/email_addresses', :object => person.email_addresses
+      = render :partial => 'phone_numbers/phone_numbers', :object => person.phone_numbers

@@ -12,7 +12,6 @@ body {
   width: 85%;
   min-width: 600px;
   max-width: 1250px;
-  min-height: 380px;
   position: relative;
   line-height: 1.25em;
   @include box-sizing(border-box);
@@ -43,5 +42,6 @@ body {
 
 #container {
   position: relative;
+  min-height: 320px;
   z-index: 1;
 }

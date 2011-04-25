@@ -1,14 +1,14 @@
-- title "Companies" 
+- title "Companies"
 
 %p= link_to "New Company", new_company_path, :id => "new_company"
 
 .companies
-  - @companies.each do |company| 
+  - @companies.each do |company|
     .company
-      %h4= link_to company, company
-      = render :partial => 'email_addresses/email_addresses', :object => company.email_addresses 
-      = render :partial => 'phone_numbers/phone_numbers', :object => company.phone_numbers 
+      %h4= link_to company.name, company
       %ul.actions
-        = link_to "Show", company 
-        = link_to "Edit", edit_company_path(company) 
-        = link_to "Destroy", company, :confirm => 'Are you sure?', :method => :delete 
+        = link_to "Show", company
+        = link_to "Edit", edit_company_path(company)
+        = link_to "Destroy", company, :confirm => 'Are you sure?', :method => :delete
+      = render :partial => 'email_addresses/email_addresses', :object => company.email_addresses
+      = render :partial => 'phone_numbers/phone_numbers', :object => company.phone_numbers

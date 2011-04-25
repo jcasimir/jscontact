@@ -1,44 +1,23 @@
 @import "compass";
 @import "compass/reset";
 @import "compass/layout";
+@import "fancy-buttons";
 @import "theme";
 @import "lib";
 @import "layout";
-@import "people";
-@import "fancy-buttons";
+@import "pages";
+@import "forms";
 @include reset-html5;
 
 .headings {
   font-family: "Yanone Kaffeesatz", sans;
 }
+.group {
+  @include pie-clearfix;
+}
 
 a { color: $link;
   &:hover { color: darken($link, 6) };
-}
-
-.flash {
-  @include box-shadow(rgba(#000, .5) 0 1px 3px);
-  @include border-bottom-radius(6px);
-  @include box-sizing(border-box);
-  @include background-image(linear-gradient(rgba(#000, .4), rgba(#000, .6)));
-  border: 3px solid rgba(#fff, .5);
-  @include background-clip(padding-box);
-  text-shadow: rgba(#000, .6) 0 -1px;
-  color: #fff;
-  margin: 0 auto;
-  position: absolute; top: -51px; left: 0;
-  padding: .4em .8em;
-  width: 100%;
-  text-align: center;
-  border-top: 0;
-  &:empty {
-    height: 0px;
-    overflow: hidden;
-    padding: 0;
-    border-width: 0;
-    @include box-shadow(none);
-    background: none;
-  }
 }
 
 h1 {
@@ -100,39 +79,17 @@ h1,h2,h3,h4,h5,h6 {
 
 h1 + p a[href$="new"] { @extend .top-button; }
 
-#articles {
-  margin: -15px -20px -20px;
-  padding: 0 20px 0;
-  min-width: 550px;
-  @include box-sizing(border-box);
-  position: relative;
-  @include border-bottom-radius(6px);
-  border-right: 1px solid #e2e2e2;
-  li {
-    border-bottom: 1px dashed #e5e5e5;
-    padding: 1em 0 .8em;
-    margin-right: 20px;
-    font-size: 1.2em;
-    position: relative;
-    &:last-child {
-      @include border-bottom-left-radius(6px);
-      border-bottom: 0;
-    }
-    & > a:first-child {
-      font-weight: bold;
-      display: block;
-      color: $text;
-      padding-bottom: .1em;
-    }
-  }
+.alt-link {
+ @include opacity(.4); &:hover { @include opacity(.8); }
+}
+
+.people .person, .companies .company {
+  clear: both;
   .actions {
-     border-left: 1px dotted #ddd;
-     padding-left: 8px;
-     margin-left: 3px;
-     line-height: 1em;
-     position: relative; top: 2px;
-     a { @include opacity(.2); }
-     a:hover { @include opacity(.4); }
+    line-height: 2em;
+    float: right;
+    a { @extend .alt-link; text-decoration: none; display: inline-block; padding-left: .2em; font-size: .9em; }
+    a:hover { text-decoration: underline;}
   }
   .tag_list {
     display: inline-block;
@@ -142,7 +99,7 @@ h1 + p a[href$="new"] { @extend .top-button; }
   }
 }
 
-.actions {
+#container > .actions, h1 + div .actions {
   border-bottom: 1px dashed #ddd;
   margin-bottom: .7em;
   padding-bottom: .7em;
@@ -162,77 +119,28 @@ h1 + p a[href$="new"] { @extend .top-button; }
     &:before {
       @include opacity(.2);
       position: relative;
+      top: 2px;
+      display: inline-block;
     }
     &:hover:before { @include opacity(.6); }
     //padding-left: 30px;
   }
   a[data-method='delete'] {
-    right: 90px;
+    right: 70px;
     &:before {
       content: " ";
-      display: inline-block;
       background: image-url("destroy.png") no-repeat;
       width: image-width("destroy.png") + 4;
       height: image-height("destroy.png");
-      top: 2px;
     }
   }
   a[href$='edit'] {
     &:before {
       content: " ";
-      display: inline-block;
       background: image-url("edit.png") no-repeat;
       width: image-width("edit.png") + 4;
       height: image-height("edit.png");
-      top: 2px;
     }
   }
-}
-
-.input {
-  width: 100%;
-  @include box-sizing(border-box);
-  @include border-radius(4px);
-  padding: .3em .4em;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  color: darken($text, 8);
-  font-size: 1.3em;
-  &:focus {
-    outline: 0;
-    @include box-shadow(rgba(#81b1df, .7) 0 0 5px 1px inset);
-    border-color: #81b1df;
-    background-color: #fff;
-  }
-}
-
-form {
-  input[type=text]{
-    @extend .input;
-    margin: 0;
-  }
-  p {
-    padding: 0;
-    margin-bottom: .6em;
-  }
-  label {
-    color: $light;
-    font-size: .9em;
-    font-weight: bold;
-    line-height: 1.5em;
-    padding-bottom: .2em;
-    display: inline-block;
-    text-transform: uppercase;
-  }
-  textarea {
-    @extend .input;
-    height: 12em;
-    font-size: 1.1em;
-  }
-}
-
-input[type=submit] {
-  @include fancy-button($header, $theme: mini);
-  font-size: 1.2em;
 }
 
